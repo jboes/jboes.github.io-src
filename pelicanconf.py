@@ -8,15 +8,16 @@ SITEURL = ''
 
 PATH = 'content'
 # static paths will be copied without parsing their contents
-STATIC_PATHS = [
-    'pdfs',
-    'images',]
+STATIC_PATHS = ['pdfs', 'images']
 ARTICLE_PATHS = ['Blog']
 PAGE_PATHS = ['pages']
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
 ARTICLE_URL = '{date:%Y}/{slug}.html'
+USE_FOLDER_AS_CATEGORY = True
+DEFAULT_CATEGORY = 'Blog'
+DEFAULT_DATE = 'fs'
 
-THEME = 'pelican-blueidea'
+THEME = 'blueidea'
 THEME_STATIC_DIR = 'theme'
 SITESUBTITLE = 'Exploration through coding, catalysis, and education'
 GITHUB_URL = 'https://github.com/jboes'
@@ -25,6 +26,9 @@ GOOGLE_ANALYTICS = 'UA-XXXX-YYYY'
 ORG_READER_EMACS_LOCATION = '/Applications/Emacs.app/Contents/MacOS/Emacs'
 
 TIMEZONE = 'US/Pacific'
+
+DELETE_OUTPUT_DIRECTORY = True
+LOAD_CONTENT_CACHE = False
 
 DEFAULT_LANG = u'en'
 
@@ -44,12 +48,12 @@ SOCIAL = (('GitHub', 'https://github.com/jboes'),
           ('Linkedin', 'https://www.linkedin.com/in/jacobboes'),)
 
 PLUGIN_PATHS = ['/Users/jrboes/webpage/pelican-plugins']
-PLUGINS = ['org_reader']
+PLUGINS = ['org_reader', 'org_pandoc_reader']
 
-DEFAULT_PAGINATION = 10
+# DEFAULT_PAGINATION = 10
 
 # Display pages list on the top menu
-DISPLAY_PAGES_ON_MENU = False
+DISPLAY_PAGES_ON_MENU = True
 
 # Display categories list on the top menu
 DISPLAY_CATEGORIES_ON_MENU = True
@@ -72,4 +76,4 @@ DISPLAY_SEARCH_FORM = False
 
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
