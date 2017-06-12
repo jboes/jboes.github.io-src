@@ -1,6 +1,5 @@
 #+TITLE: First post in Pelican!
 #+DATE: 2016-07-14
-#+CATEGORY: Blog
 #+PROPERTY: MODIFIED <2017-06-11 Sun>
 #+PROPERTY: TAGS publishing
 

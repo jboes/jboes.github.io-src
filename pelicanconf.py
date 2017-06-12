@@ -27,9 +27,6 @@ ORG_READER_EMACS_LOCATION = '/Applications/Emacs.app/Contents/MacOS/Emacs'
 
 TIMEZONE = 'US/Pacific'
 
-DELETE_OUTPUT_DIRECTORY = True
-LOAD_CONTENT_CACHE = False
-
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
@@ -50,7 +47,7 @@ SOCIAL = (('GitHub', 'https://github.com/jboes'),
 PLUGIN_PATHS = ['/Users/jrboes/webpage/pelican-plugins']
 PLUGINS = ['org_reader', 'org_pandoc_reader']
 
-# DEFAULT_PAGINATION = 10
+DEFAULT_PAGINATION = 10
 
 # Display pages list on the top menu
 DISPLAY_PAGES_ON_MENU = True
@@ -69,11 +66,6 @@ DISPLAY_AUTHOR_ON_POSTINFO = False
 
 # Display the search form
 DISPLAY_SEARCH_FORM = False
-
-# Sort pages list by a given attribute
-# PAGES_SORT_ATTRIBUTE = Title
-
-
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
