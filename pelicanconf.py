@@ -18,7 +18,7 @@ USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
 DEFAULT_DATE = 'fs'
 
-THEME = 'notmyidea'
+THEME = 'blueidea'
 THEME_STATIC_DIR = 'theme'
 SITESUBTITLE = 'Exploration through coding, catalysis, and education'
 GITHUB_URL = 'https://github.com/jboes'
@@ -26,8 +26,9 @@ GITHUB_URL = 'https://github.com/jboes'
 
 ORG_READER_EMACS_LOCATION = '/usr/local/bin/emacs'
 
-TIMEZONE = 'US/Pacific'
+DELETE_OUTPUT_DIRECTORY = True
 
+TIMEZONE = 'US/Pacific'
 DEFAULT_LANG = u'en'
 
 # Feed generation is usually not desired when developing
@@ -54,7 +55,7 @@ DEFAULT_PAGINATION = 10
 DISPLAY_PAGES_ON_MENU = True
 
 # Display categories list on the top menu
-DISPLAY_CATEGORIES_ON_MENU = True
+DISPLAY_CATEGORIES_ON_MENU = False
 
 # Display categories list as a submenu of the top menu
 DISPLAY_CATEGORIES_ON_SUBMENU = False
