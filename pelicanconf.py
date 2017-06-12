@@ -9,6 +9,7 @@ SITEURL = ''
 PATH = 'content'
 # static paths will be copied without parsing their contents
 STATIC_PATHS = ['pdfs', 'images']
+
 ARTICLE_PATHS = ['Blog']
 PAGE_PATHS = ['pages']
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
@@ -17,13 +18,13 @@ USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
 DEFAULT_DATE = 'fs'
 
-THEME = 'blueidea'
+THEME = 'notmyidea'
 THEME_STATIC_DIR = 'theme'
 SITESUBTITLE = 'Exploration through coding, catalysis, and education'
 GITHUB_URL = 'https://github.com/jboes'
-GOOGLE_ANALYTICS = 'UA-XXXX-YYYY'
+# GOOGLE_ANALYTICS = 'UA-XXXX-YYYY'
 
-ORG_READER_EMACS_LOCATION = '/Applications/Emacs.app/Contents/MacOS/Emacs'
+ORG_READER_EMACS_LOCATION = '/usr/local/bin/emacs'
 
 TIMEZONE = 'US/Pacific'
 
@@ -44,8 +45,8 @@ SOCIAL = (('GitHub', 'https://github.com/jboes'),
           ('Twitter', 'https://twitter.com/jacob_boes'),
           ('Linkedin', 'https://www.linkedin.com/in/jacobboes'),)
 
-PLUGIN_PATHS = ['/Users/jrboes/webpage/pelican-plugins']
-PLUGINS = ['org_reader', 'org_pandoc_reader']
+PLUGIN_PATHS = ['./pelican-plugins']
+PLUGINS = ['org_reader']
 
 DEFAULT_PAGINATION = 10
 
