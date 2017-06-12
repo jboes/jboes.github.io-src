@@ -10,7 +10,7 @@ PATH = 'content'
 # static paths will be copied without parsing their contents
 STATIC_PATHS = ['pdfs', 'images']
 
-ARTICLE_PATHS = ['Blog']
+ARTICLE_PATHS = ['blog']
 PAGE_PATHS = ['pages']
 ARTICLE_SAVE_AS = '{date:%Y}/{slug}.html'
 ARTICLE_URL = '{date:%Y}/{slug}.html'
@@ -18,15 +18,13 @@ USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
 DEFAULT_DATE = 'fs'
 
-THEME = 'blueidea'
+THEME = 'notmyidea'
 THEME_STATIC_DIR = 'theme'
 SITESUBTITLE = 'Exploration through coding, catalysis, and education'
 GITHUB_URL = 'https://github.com/jboes'
-# GOOGLE_ANALYTICS = 'UA-XXXX-YYYY'
+GOOGLE_ANALYTICS = 'UA-XXXX-YYYY'
 
 ORG_READER_EMACS_LOCATION = '/usr/local/bin/emacs'
-
-DELETE_OUTPUT_DIRECTORY = True
 
 TIMEZONE = 'US/Pacific'
 DEFAULT_LANG = u'en'

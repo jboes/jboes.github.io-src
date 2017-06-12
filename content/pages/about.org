@@ -1,15 +1,24 @@
-#+TITLE: Jacob Boes
+#+TITLE: About
 #+DATE: 2017-06-11
-#+CATEGORY: About
-#+PROPERTY: TAGS about
 #+OPTIONS: toc:nil num:nil
+
+* Jacob Boes
 
 [[../images/portrait.jpg]]
 
-I am currently a 4th year Chemical engineering Ph.D. candidate at Carnegie Mellon University. My research interests include molecular simulation of alloy surfaces and computational method development. I am also deeply interested in educational research for the betterment of student learning and retention rates in the field of engineering.
+I am currently a postdoctoral researcher at [[http://suncat.stanford.edu/about][SUNCAT]], a research partnership between Stanford's school of engineering and SLAC National Accelerator Laboratory. I am currently
+performing research in the area of computational catalysis, working on characterizing adsorbate-adsorbate interactions on transition metal surfaces. My primary interest is in
+advancing computational methodologies in the field of computational catalysis. This includes machine-learning techniques, data mining and management, and research workflow.
 
+Previously, I have performed similar computational work in the [[http://kitchingroup.cheme.cmu.edu/][Kitchin Group]] at Carnegie Mellon University on Transition metal alloys. This work was specific to the construction
+of potential energy surfaces with feed-forward neural networks for transition metal alloy surfaces. These networks have proven to be extremely effective at accurately representing
+the underlying high-level Density Functional Theory calculations they are trained to and can dramatically improve the speed of calculating the energies for large unit cells.
 
-* Credentials:
+I am also very interested in educational research, in particular, understanding they way people learn in order to better mentor others with the ultimate goal of increasingly the
+level of scientific literacy in my community. To that end, I have participated in student mentoring, classroom instruction, and education related coursework whenever possible,
+including a course specific to STEM education offered by the [[http://www.cmu.edu/teaching/][Eberly Center]].
+
+** Credentials:
 
 [[../pdfs/jboes-cv.pdf][Curriculum Vitae]]
 
@@ -19,14 +28,13 @@ I am currently a 4th year Chemical engineering Ph.D. candidate at Carnegie Mello
 
 [[../pdfs/jboes-transcript-2016_07_03.pdf][Eberly Transcript]]
 
-* Contact me:
+** Contact me:
 
 Email: [[mailto:jacobboes@gmail.com][jacobboes@gmail.com]] | [[mailto:jrboes@stanford.edu][jrboes@stanford.edu]] \\
 Twitter: [[https://twitter.com/jacob_boes][@jacob_boes]]
 
-* Address:
+** Address:
 
-Jacob Boes \\
 SLAC National Accelerator Lab, SUNCAT Room 217 \\
 2575 Sand Hill Rd. \\
 Menlo Park, CA 94025
