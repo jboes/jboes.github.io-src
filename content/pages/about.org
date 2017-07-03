@@ -24,9 +24,11 @@ including a course specific to STEM education offered by the [[http://www.cmu.ed
 
 [[https://orcid.org/0000-0002-7303-7782][ORCID]]
 
-[[../pdfs/teaching-portfolio.pdf][Teaching Portfolio]]
+[[../pdfs/jboes-teaching-portfolio.pdf][Teaching Portfolio]]
 
-[[../pdfs/jboes-transcript-2016_07_03.pdf][Eberly Transcript]]
+[[../pdfs/jboes-eberly-letter.pdf][Eberly Letter of Completion]]
+
+[[../pdfs/jboes-eberly-transcript.pdf][Eberly Transcript]]
 
 ** Contact me:
 
@@ -35,6 +37,6 @@ Twitter: [[https://twitter.com/jacob_boes][@jacob_boes]]
 
 ** Address:
 
-SLAC National Accelerator Lab, SUNCAT Room 217 \\
+SLAC National Accelerator Lab, SUNCAT Room 221 \\
 2575 Sand Hill Rd. \\
 Menlo Park, CA 94025
