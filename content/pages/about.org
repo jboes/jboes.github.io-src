@@ -8,14 +8,12 @@
 
 I am currently a postdoctoral researcher at [[http://suncat.stanford.edu/about][SUNCAT]], a research partnership between Stanford's school of engineering and SLAC National Accelerator Laboratory. I am currently
 performing research in the area of computational catalysis, working on characterizing adsorbate-adsorbate interactions on transition metal surfaces. My primary interest is in
-advancing computational methodologies in the field of computational catalysis. This includes machine-learning techniques, data mining and management, and research workflow.
+advancing computational methodologies in the field of catalysis. This includes machine-learning techniques, data mining and management, and research workflow.
 
-Previously, I have performed similar computational work in the [[http://kitchingroup.cheme.cmu.edu/][Kitchin Group]] at Carnegie Mellon University on Transition metal alloys. This work was specific to the construction
-of potential energy surfaces with feed-forward neural networks for transition metal alloy surfaces. These networks have proven to be extremely effective at accurately representing
-the underlying high-level Density Functional Theory calculations they are trained to and can dramatically improve the speed of calculating the energies for large unit cells.
+Previously, I have performed similar computational work in the [[http://kitchingroup.cheme.cmu.edu/][Kitchin Group]] at Carnegie Mellon University on transition metal alloys. This work was specific to the construction of potential energy surfaces with feed-forward neural networks for transition metal alloy surfaces. These networks have proven to be extremely effective at accurately representing the underlying high-level Density Functional Theory calculations they are trained to and can dramatically improve the speed of calculating those energies for large unit cells.
 
-I am also very interested in educational research, in particular, understanding they way people learn in order to better mentor others with the ultimate goal of increasingly the
-level of scientific literacy in my community. To that end, I have participated in student mentoring, classroom instruction, and education related coursework whenever possible,
+I am also very interested in educational research, in particular, understanding they way people learn in order to better mentor others with the ultimate goal of increasing the
+global level of scientific literacy. To that end, I have participated in student mentoring, classroom instruction, and education related coursework whenever possible,
 including a course specific to STEM education offered by the [[http://www.cmu.edu/teaching/][Eberly Center]].
 
 ** Credentials:
@@ -37,6 +35,6 @@ Twitter: [[https://twitter.com/jacob_boes][@jacob_boes]]
 
 ** Address:
 
-SLAC National Accelerator Lab, SUNCAT Room 221 \\
+SLAC National Accelerator Lab \\
 2575 Sand Hill Rd. \\
 Menlo Park, CA 94025
