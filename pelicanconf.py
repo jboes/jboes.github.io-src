@@ -24,7 +24,7 @@ SITESUBTITLE = 'Exploration through coding, catalysis, and education'
 GITHUB_URL = 'https://github.com/jboes'
 GOOGLE_ANALYTICS = 'UA-XXXX-YYYY'
 
-ORG_READER_EMACS_LOCATION = '/usr/local/bin/emacs'
+ORG_READER_EMACS_LOCATION = '/usr/bin/emacs'
 
 TIMEZONE = 'US/Pacific'
 DEFAULT_LANG = u'en'
