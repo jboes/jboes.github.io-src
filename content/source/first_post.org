@@ -1,0 +1,18 @@
+#+TITLE: First post in Pelican!
+#+DATE: 2016-07-14
+#+PROPERTY: MODIFIED <2017-06-11 Sun>
+#+PROPERTY: TAGS publishing
+
+This is a test post using Pelican.
+
+Pelican has a lot of convenient features which make integration with my Github personal site easy. Including the pelican files in an orphan branch allows me to keep the build files contained in the same repository so I can get it quickly on any machine.
+
+Once inside the repo 'pelican' branch, I can commit changes to the content files and have the site automatiaclly build using a the slightly modified tip off the [[http://docs.getpelican.com/en/3.6.3/tips.html][Pelican website]]. The following exists in the '.git/hooks/post-commit' file of my websites git-repo with executable permissions:
+
+#+BEGIN_SRC sh
+pelican content -o output -s pelicanconf.py && ghp-import output && git push origin gh-pages:master
+#+END_SRC
+
+Plenty more to play around with in pelican
+
+This post is written in Markdown, which requires exactly two spaces to be added after a line to incert a linebreak... Not crazy about the formatting here. Hopefully, getting content directly from emacs org-mode will prove simple enough to switch to ASAP.

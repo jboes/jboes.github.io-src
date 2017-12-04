@@ -8,7 +8,7 @@ SITEURL = ''
 
 PATH = 'content'
 # static paths will be copied without parsing their contents
-STATIC_PATHS = ['pdfs', 'images', 'scripts']
+STATIC_PATHS = ['pdfs', 'images', 'scripts', 'source']
 
 ARTICLE_PATHS = ['blog']
 PAGE_PATHS = ['pages']

@@ -1,0 +1,17 @@
+#+TITLE: Integrating org-mode with Pelican
+#+DATE: <2017-06-13 Tue>
+#+PROPERTY: TAGS publishing
+
+I have finally made time to return to my blog and update some information now that I am at SUNCAT. I will be picking up from where I left off as I have made some changes to my setup due to some data loss during the transition.
+
+Firstly, Pelican has gained a significant number of [[https://github.com/getpelican/pelican-plugins][Plugins]] since I last used it. Including [[https://github.com/getpelican/pelican-plugins/tree/master/org_reader][org-reader]] which allows for seamless integration of org files as substitutes for Markdown -- more or less. I did find that the static content stored in 'pages' does not have its link information added to the title bar no matter how hard I try when using my old theme, /blueidea/. However, it does work in the original /notmyidea/ which comes standard with the installation of Pelican. I've decided to use this theme for the time being until I can figure out what the trouble is. Now I can compose all of my posts natively in org documents using the same syntax that I use to write a manuscript, notes, code, etc.. Although much more convenient than composing in Markdown, I still need a method for managing blog posts from one central document and managing what is added to the content folder and when. John has done some work on this in emacs-lisp for his own blog, I believe, so I will look into that next.
+
+Finally, I have made some revisions to my current implementation on Github. It turns out this is far easier to manage with 2 Github repo, one for the website and another for the Pelican code which produces the website code. I did not have the later previously and lost my original pelican directory, hence the data-loss. Now, this information is publically available on Github at [[https://github.com/jboes/jboes.github.io-src]]. This also allows me to rebuild the blog on any machine I might need it by pulling the repo and submodules.
+
+This requires a slight modification to the code put into the '.git/hooks/post-commit' file as shown below.
+
+#+BEGIN_SRC sh
+pelican content -s pelicanconf.py && ghp-import output && git push git@github.com:jboes/jboes.github.io.git gh-pages:master
+#+END_SRC
+
+This is exactly as it appears on the [[http://docs.getpelican.com/en/3.7.1/tips.html][tips section]] of the Pelican documentation, but with my personal repo added in.
