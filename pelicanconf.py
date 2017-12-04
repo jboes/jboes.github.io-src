@@ -18,7 +18,7 @@ USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Blog'
 DEFAULT_DATE = 'fs'
 
-THEME = '$HOME/webpage/pelican-themes/pelican-bootstrap3'
+THEME = 'notmyidea'
 THEME_STATIC_DIR = 'theme'
 SITESUBTITLE = 'Exploration through coding, catalysis, and education'
 GITHUB_URL = 'https://github.com/jboes'
@@ -29,6 +29,7 @@ ORG_READER_EMACS_LOCATION = '/usr/bin/emacs'
 
 TIMEZONE = 'US/Pacific'
 DEFAULT_LANG = u'en'
+
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
