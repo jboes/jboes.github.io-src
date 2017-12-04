@@ -787,7 +787,7 @@ workflow = Workflow([firework])
 launchpad.add_wf(workflow)
 #+END_SRC
 
-After running this script, if you have already initiated Fireworks rapidfire on Sherlock, you can see how to do this in a [[suncat-fireworks.org][previous post]]. Once it is turned on, Sherlock should submit a job to the queue automatically.
+After running this script, if you have already initiated Fireworks rapidfire on Sherlock, you can see how to do this in a [[./suncat-fireworks.org][previous post]]. Once it is turned on, Sherlock should submit a job to the queue automatically.
 
 So what's going on here exactly? We'll for full details about the differences between a PyTask, Firework, and Wroflow, I would recommend looking into the in-depth documentation available on the [[https://materialsproject.github.io/fireworks/][Fireworks website]]. When this calculation runs, it will perform 2 distinct operations on the calculation node once it is started. The first, =t0=, is the =qefw.encode_to_atoms= function demonstrated previously. (NOTE: Make sure the qefw functions are on the PYHONPATH on the server before you run this example!). This will unpack the encoding which is stored in the database by passing =encoding= as an argument to the first function. This allows me to run this script from my local machine and still have the encoding uploaded to the database and decoded on the server. This is very useful for me because I enjoy using a heavy version of emacs which does not run well on the servers.
 

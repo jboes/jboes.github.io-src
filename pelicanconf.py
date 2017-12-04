@@ -22,7 +22,8 @@ THEME = 'notmyidea'
 THEME_STATIC_DIR = 'theme'
 SITESUBTITLE = 'Exploration through coding, catalysis, and education'
 GITHUB_URL = 'https://github.com/jboes'
-GOOGLE_ANALYTICS = 'UA-XXXX-YYYY'
+GOOGLE_ANALYTICS = 'UA-110598894-1'
+DISQUS_SITENAME = 'jboes-github-io'
 
 ORG_READER_EMACS_LOCATION = '/usr/bin/emacs'
 
@@ -37,7 +38,9 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('ORCID', 'https://orcid.org/0000-0002-7303-7782'),)
+LINKS = (
+    ('ORCID', 'https://orcid.org/0000-0002-7303-7782'),
+    ('Google Scholar', 'https://scholar.google.com/citations?user=EqNyNOcAAAAJ&hl=en&oi=ao'),)
 
 # Social widget
 SOCIAL = (('GitHub', 'https://github.com/jboes'),
