@@ -19,17 +19,16 @@ password='your_password'  # Add your password
 In the next section, I'll demonstrate how to log in to the MongoDB with your own credentials.
 
 * Fireworks on Sherlock
-Sherlock is the most well-established cluster of the three available to SUNCAT, so it's generally easiest to start installation here to build up some confidence. In theory, this installation is as simple as running the following script:
-
 ** Automatic setup script
+Sherlock is the most well-established cluster of the three available to SUNCAT, so it's generally easiest to start installation here to build up some confidence. In theory, this installation is as simple as running the following script.
 
 #+BEGIN_SRC sh
 sh /share/PI/suncat/fireworks_scripts/makeFireworksDirectory.sh
 #+END_SRC
 
-This will execute the following script:
+This will execute the following script.
 
-#+BEGIN_SRC sh
+#+BEGIN_SRC sh :shebang "#!/bin/sh"
 #!/bin/sh
 
 #Make a directory in user $SCRATCH to hold the local fireworks configuration folder
@@ -76,11 +75,11 @@ pip install scipy
 echo "alias lpadc=\"lpad -l $SCRATCH/fireworks/my_launchpad.yaml\"" >> $SCRATCH/fireworks/fireworks_virtualenv/bin/activate
 #+END_SRC
 
-This will construct a fireworks directory in your $SCRATCH folder with all the files you should need to run Fireworks on Sherlock. This includes some example scripts and the necessary yaml files. I'll discuss these in more detail a little later on.
+This will construct a fireworks directory in your =$SCRATCH= folder with all the files you should need to run Fireworks on Sherlock. This includes some example scripts and the necessary yaml files. I'll discuss these in more detail a little later on.
 
 The script will also install a python virtual environment for you inside that directory which is simply a self-contained python installation which is configured specifically running Fireworks and Quantum Espresso. This is a useful methodology because it will keep your Fireworks installation self-contained. This is particularly useful if the Quantum Espresso libraries conflict with your preferred setup.
 
-However, this can also add some additional difficulty when doing development work or trying to troubleshoot. For example, you might prefer to use your own ase-espresso installation so you can make personal changes to it. We also don't gain much insight about what's going on under the hoody, so I'll go through a more detailed explanation next.
+However, this can also add some additional difficulty when doing development work or trying to troubleshoot. For example, you might prefer to use your own ase-espresso installation so you can make personal changes to it. We also don't gain much insight about what's going on under the hood, so I'll go through a more detailed explanation next.
 
 ** Installing Python and modules
 All of the following steps are more-or-less interchangeable with the steps outlined with the script above. Before we do anything with Fireworks, we need to make sure we have a sufficiently up-to-date Python version and Quantum Espresso installation. We'll start by checking the version of Python available on the PATH.
@@ -94,9 +93,9 @@ print(sys.version)
 : 3.6.2 |Anaconda, Inc.| (default, Sep 30 2017, 18:42:57) 
 : [GCC 7.2.0]
 
-I prefer to have my own installation of [[https://www.anaconda.com/download/#linux][Anaconda]] on each of my machines because it makes package management easier and comes pre-packaged with many useful modules for scientific programming. According to the Fireworks [[https://materialsproject.github.io/fireworks/installation.html][website]], Python 2.7.3+ or 3.3+ should be sufficient. The real test is whether you can install the correct modules or not. This should work well enough on a personal machine, but may not on a server. The $--user$ flag is used to install the modules into the home directory so that super user privileges are not needed.
+I prefer to have my own installation of [[https://www.anaconda.com/download/#linux][Anaconda]] on each of my machines because it makes package management easier and comes pre-packaged with many useful modules for scientific programming. According to the Fireworks [[https://materialsproject.github.io/fireworks/installation.html][website]], Python 2.7.3+ or 3.3+ should be sufficient. The real test is whether you can install the correct modules or not. This should work well enough on a personal machine, but may not on a server. The =--user= flag is used to install the modules into the home directory so that super user privileges are not needed.
 
-#+BEGIN_SRC sh :results output org drawer
+#+BEGIN_SRC sh :results output org drawer :exports both
 pip install -U --user pip
 pip install -U --user setuptools
 pip install --user fireworks
@@ -145,7 +144,7 @@ cd espresso
 cp espsite.py.example.SLURMsherlock espsite.py
 #+END_SRC
 
-The final step in the code above will copy the example Sherlock template for running ase-espresso. Once this is finished you simply need to add the installation location to your PATH in your .bashrc file.
+The final step in the code above will copy the example Sherlock template for running ase-espresso. Once this is finished you simply need to add the installation location to your PATH in your =.bashrc= file.
 
 #+BEGIN_SRC sh
 # Load ase-espresso
@@ -155,7 +154,7 @@ export PYTHONPATH=~/code:$PYTHONPATH
 export ESP_PSP_PATH=/home/vossj/suncat/esdld/psp
 #+END_SRC
 
-The last line of code here points to the Pseudo potential paths to be used when preforming your calculations. You may want to change this to suit your own needs. that should cover all the details of setting up Qunatum Espresso and Fireworks from scratch.
+The last line of code here points to the Pseudo potential paths to be used when preforming your calculations. You may want to change this to suit your own needs. that should cover all the details of setting up Quantum Espresso and Fireworks from scratch.
 
 If you have trouble at this step, you have a few options:
 
@@ -167,7 +166,7 @@ Fixing this can be as simple as adding a newer version of Python to your PATH. I
 export PATH=/scratch/users/jrboes/anaconda2/bin:$PATH
 #+END_SRC
 
-Johannes' version of Python is installed here:
+Johannes' version of Python is installed here.
 
 #+BEGIN_SRC sh
 /home/vossj/suncat/bin/python2.7
@@ -198,7 +197,7 @@ cd $SCRATCH/fireworks
 mkdir logs
 #+END_SRC
 
-By default, Fireworks will create the jobs which it runs on the Sherlock cluster in files named Block-* inside of the directory where the ``launchpad'' is located. We can create this yaml file using the $lpad init$ command which comes with the newly installed Fireworks module. This will walk you through the addition of your credentials automatically with the following prompt.
+By default, Fireworks will create the jobs which it runs on the Sherlock cluster in files named Block-* inside of the directory where the ``launchpad'' is located. We can create this yaml file using the =lpad init= command which comes with the newly installed Fireworks module. This will walk you through the addition of your credentials automatically with the following prompt.
 
 #+BEGIN_SRC sh
 jrboes@sherlock1 /scratch/users/jrboes/fireworks $ lpad init
@@ -215,7 +214,7 @@ Enter ssl_ca_file (default: None) :
 Configuration written to my_launchpad.yaml!
 #+END_SRC
 
-This will generate a file named ``my_launchpad.yaml'' which contains the following.
+This will generate a file named =my_launchpad.yaml= which contains the following.
 
 #+BEGIN_SRC sh :tangle my_launchpad.yaml
 host: suncatls2.slac.stanford.edu
@@ -236,7 +235,7 @@ wf_user_indices: []
 
 You can also simply create this file by copying your credentials into a similarly named file in this directory. Don't forget to change the placeholder credentials to your own.
 
-Next we need a ``my_fireworker.yaml'' file for keeping track of the server where Fireworks are being run. Create a file of this name and add the following.
+Next we need a =my_fireworker.yaml= file for keeping track of the server where Fireworks are being run. Create a file of this name and add the following.
 
 #+BEGIN_SRC sh :tangle my_fireworker.yaml
 name: sherlock
@@ -244,9 +243,9 @@ category: ''
 query: '{}'
 #+END_SRC
 
-The ``name'' is that will appear in the database to indicate which server a Firework was run on. 
+The =name= is that will appear in the database to indicate which server a Firework was run on. 
 
-The last required yaml file is a ``my_qadapter.yaml'' file. This will contain the details of how the jobs which are committed to the queue are run.
+The last required yaml file is a =my_qadapter.yaml= file. This will contain the details of how the jobs which are committed to the queue are run.
 
 #+BEGIN_SRC sh :tangle my_qadapter.yaml
 _fw_name: CommonAdapter
@@ -265,9 +264,9 @@ logdir: /scratch/users/jrboes/fireworks/logs/
 
 These are my default settings, but you may want to set them differently depending on your needs. Keep in mind that you will not be able to specify which jobs are run on which server using the default Fireworks settings. That means the queue adapter needs to be generic to all of the jobs you run.
 
-Another important difference in this step for my purposes is that I do not add anything to my pre_rocket. The pre_rocket is bash code which is executed before the main body of code. For the automated script in the first section, the PATH and LB_LIBRARY_PATH information needed to run Quantum Espresso on Sherlock is added here. This is to keep the environment that Fireworks runs in completely segregated from whichever setup is already in place for you on Sherlock. This can make troubleshooting very convoluted since it requires an understanding of where PATH information is being called from under which contexts. This can be made worse by using existing installations of Python which are also calling PATH information which can make things run differently in the QUEUE than they do on the headnode.
+Another important difference in this step for my purposes is that I do not add anything to my pre_rocket. The pre_rocket is bash code which is executed before the main body of code. For the automated script in the first section, the PATH and LB_LIBRARY_PATH information needed to run Quantum Espresso on Sherlock is added here. This is to keep the environment that Fireworks runs in completely segregated from whichever setup is already in place for you on Sherlock. This can make troubleshooting very convoluted since it requires an understanding of where PATH information is being called from under which contexts. This can be made worse by using existing installations of Python which are also calling PATH information which can make things run differently in the QUEUE than they do on the head node.
 
-One example of this is Johannes' installation of Python here:
+One example of this is Johannes' installation of Python here.
 
 #+BEGIN_SRC sh
 cat /home/vossj/suncat/bin/python_s2.0
@@ -299,9 +298,9 @@ else
   exec /home/users/vossj/suncat/bin/python2.7 "$@"
 #+END_SRC
 
-The first if statement above is checking if we are on Sherlock 1 or 2. Notice that the PATH information provided here is the same PATH information provided in the automated script. These are the libraries which are required for running Quantum Espresso. To help my own understanding, I chose to add this PATH information to my .bashrc file. This way, my library environment is consistent in ALL contexts which is very useful for troubleshooting purposes.
+The first if statement above is checking if we are on Sherlock 1 or 2. Notice that the PATH information provided here is the same PATH information provided in the automated script. These are the libraries which are required for running Quantum Espresso. To help my own understanding, I chose to add this PATH information to my =.bashrc= file. This way, my library environment is consistent in ALL contexts which is very useful for troubleshooting purposes.
 
-Here is a copy of the Sherlock 1 specific section of my .bashrc. Loading them here prevents the need to load them in the pre_rocket or using the ``/home/vossj/suncat/bin/python_s2.0'' script when calling my own version of Python.
+Here is a copy of the Sherlock 1 specific section of my =.bashrc=. Loading them here prevents the need to load them in the pre_rocket or using the =/home/vossj/suncat/bin/python_s2.0= script when calling my own version of Python.
 
 #+BEGIN_SRC sh
 if [[ "$SHERLOCK" == "1" ]]; then
@@ -330,7 +329,7 @@ if [[ "$SHERLOCK" == "1" ]]; then
 
 NOTE: While this setup is convenient for keeping things consistent in all working environments, that is also its weakness. It might not be suitable to load the Quantum Espresso libraries for other codes. If you suspect you'll have conflicting libraries needed for other software, this method is NOT for you.
 
-By the end of this section you should have a $SCRATCH/fireworks directory with the following files:
+By the end of this section you should have a $SCRATCH/fireworks directory with the following files.
 
 #+BEGIN_SRC sh
 my_fireworker.yaml
@@ -339,7 +338,7 @@ my_qadapter.yaml
 #+END_SRC
 
 ** Initializing the database
-Up until this point, we have not constructed any database architecture which will tell our generic MongoDB how to run Fireworks. To make this process simpler, it is convenient to have an alias in the .bashrc file which tells the $lpad$ command where your yaml files are.
+Up until this point, we have not constructed any database architecture which will tell our generic MongoDB how to run Fireworks. To make this process simpler, it is convenient to have an alias in the =.bashrc= file which tells the =lpad= command where your yaml files are.
 
 #+BEGIN_SRC sh
 alias lpad='lpad -l $SCRATCH/fireworks/my_launchpad.yaml'
@@ -363,7 +362,9 @@ Running this script will submit a maximum of 40 jobs to the queue for as long as
 
 This is a fairly long post already, so I will save discussion of some of the basics of Fireworks submission (for Quantum Espresso) for next time. Getting used to the way Fireworks operates is much more challenging then actually installing it.
 
-** Other recourses:
+* Other recourses
 
 An introductory presentation to from former post-doc Zack Ulissi: [[https://docs.google.com/presentation/d/1w8XW8Q-JhWRM7-MjOB7R53UoAe42t-CKWNuZLmQSvgA/edit#slide=id.p][Google slides]].
 
+
+The org-mode documentation used to produce this post is available [[./suncat-fireworks.org][here]].

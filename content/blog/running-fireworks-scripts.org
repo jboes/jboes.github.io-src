@@ -9,12 +9,11 @@ The next logical choice for retaining some order is usually to distribute these 
 Using a database to store information about where calculations are located has all the advantages of both systems. Calculations are kept well organized in their own directory, while the database stores keywords which allow that information to be accessed easily. These keywords can be as simple as storing the names of the directories you would have used previously. The trick is getting used to this way of collecting information. I'll try and go over some basic methodologies which could be generally useful for getting accustomed to this style.
 
 ** Running Quantum Espresso
-Before we try running Fireworks at all, we should make sure we can run Quantum Espresso first. In a previous post, I went over installing Fireworks on Sherlock for SUNCAT users. This post also goes over getting the libraries needed for Quantum Espresso working in any environment. If you've followed this approach, you should be able to run the following example script with little troubles.
+Before we try running Fireworks at all, we should make sure we can run Quantum Espresso first. In a previous post, I went over installing Fireworks on Sherlock for SUNCAT users. This post also goes over getting the libraries needed for Quantum Espresso working in any environment. If you've followed this approach, you should be able to run the following example script with little trouble.
 
-First, we construct a script file to run. Copy the following into a file named 'script.py'.
+First, we construct a script file to run. Copy the following into a file named =script.py=.
 
-#+BEGIN_SRC python :tangle script.py
-#!/usr/bin/env python
+#+BEGIN_SRC python :tangle script.py :shebang "#!/usr/bin/env python"
 from ase import Atoms
 from ase.io import write
 from espresso import espresso
@@ -391,7 +390,7 @@ def atoms_to_encode(images):
 
 Now that I have this function, I can store it into my path can call it to turn an atoms object into a JSON string which is safe to add into the database. Lets revisit the original quantum espresso example and see how this works.
 
-#+BEGIN_SRC python :results output org drawer
+#+BEGIN_SRC python :results output org drawer :exports both
 #!/usr/bin/env python
 from ase import Atoms
 from qefw import atoms_to_encode
@@ -495,11 +494,9 @@ def encode_to_atoms(encode, out_file='input.traj'):
     return images
 #+END_SRC
 
-This function can be found here.
-
 Now we can convert our JSON encoding back into an atoms object complete with the calculation parameters which were attached before they left the computer we generated them on. I do this on the same machine here simply to demonstrate the concept.
 
-#+BEGIN_SRC python :results output org drawer
+#+BEGIN_SRC python :results output org drawer :exports both
 #!/usr/bin/env python
 from ase import Atoms
 from qefw import atoms_to_encode, encode_to_atoms
@@ -626,11 +623,12 @@ images = get_potential_energy()
 
 Completing this calculation will give you an output with the following files
 
-#+BEGIN_EXPORT html
+#+BEGIN_SRC sh :exports both
 ls -lha
-#+END_EXPORT
+#+END_SRC
 
-#+BEGIN_SRC sh
+#+RESULTS:
+:RESULTS:
 -rw-r--r-- 1 jrboes suncat 3.6M Dec  3 18:32 calc.tgz
 -rw-r--r-- 1 jrboes suncat  644 Dec  3 18:32 input.traj
 -rw-r--r-- 1 jrboes suncat  28K Dec  3 18:32 log
@@ -641,10 +639,10 @@ ls -lha
 -rw-r--r-- 1 jrboes suncat  392 Dec  3 18:32 stderr
 -rw-r--r-- 1 jrboes suncat    0 Dec  3 18:32 stdout
 -rw-r--r-- 1 jrboes suncat    8 Dec  3 18:32 uniqnodefile.18552100
-#+END_SRC
+:END:
 
 *** Recovering an existing calculator
-From the previous script, we now have a calculation which is a good save point for building off of new calculations. By loading in the `calc.tgz` file which was saved, we can restart our calculation from the finished relaxation using the following script.
+From the previous script, we now have a calculation which is a good save point for building off of new calculations. By loading in the =calc.tgz= file which was saved, we can restart our calculation from the finished relaxation using the following script.
 
 #+BEGIN_SRC python :results output org drawer
 from espresso import espresso
@@ -700,9 +698,9 @@ def get_total_potential(out_file='potential.msg'):
 #+END_SRC
 
 ** Running through Fireworks
-Finally, we are ready to submit a basic calculation to Fireworks using the tools discussed above. To keep this documentation interactive, I will be pulling my own credentials from a secure file. This will looks like the following in the code that follows.
+Finally, we are ready to submit a basic calculation to Fireworks using the tools discussed above. To keep this documentation interactive, I will be pulling my own credentials from a secure file. This will looks like the following.
 
-#+BEGIN_SRC python :results output org drawer
+#+BEGIN_SRC python :results output org drawer :exports both
 from netrc import netrc
 
 # Read credentials from a secure location
@@ -783,15 +781,15 @@ workflow = Workflow([firework])
 launchpad.add_wf(workflow)
 #+END_SRC
 
-After running this script, if you have already initiated Fireworks rapidfire on Sherlock, you can see how to do this in the previous post: [[./suncat-fireworks.org]]. Once it is turned on, Sherlock should submit a job to the queue automatically.
+After running this script, if you have already initiated Fireworks rapidfire on Sherlock, you can see how to do this in a [[suncat-fireworks.org][previous post]]. Once it is turned on, Sherlock should submit a job to the queue automatically.
 
-So what's going on here exactly? We'll for full details about the differences between a PyTask, Firework, and Wroflow, I would recommend looking into the in-depth documentation available on the [[https://materialsproject.github.io/fireworks/][Fireworks website]]. When this calculation runs, it will perform 2 distinct operations on the calculation node once it is started. The first, $t0$, is the qefw.encode_to_atoms function demonstrated previously. (NOTE: Make sure the qefw functions are on the PYHONPATH on the server before you run this example!). This will unpack the encoding which is stored in the database by passing $encoding$ as an argument to the first function. This allows me to run this script from my local machine and still have the encoding uploaded to the database and decoded on the server. This is very useful for me because I enjoy using a heavy version of emacs which does not run well on the servers.
+So what's going on here exactly? We'll for full details about the differences between a PyTask, Firework, and Wroflow, I would recommend looking into the in-depth documentation available on the [[https://materialsproject.github.io/fireworks/][Fireworks website]]. When this calculation runs, it will perform 2 distinct operations on the calculation node once it is started. The first, =t0=, is the =qefw.encode_to_atoms= function demonstrated previously. (NOTE: Make sure the qefw functions are on the PYHONPATH on the server before you run this example!). This will unpack the encoding which is stored in the database by passing =encoding= as an argument to the first function. This allows me to run this script from my local machine and still have the encoding uploaded to the database and decoded on the server. This is very useful for me because I enjoy using a heavy version of emacs which does not run well on the servers.
 
-Once the $t0$ task is performed successfully, the $t1$ task will begin and perform the relaxation on the calculation node as well. Since the $qefw.get_potential_energy$ function returns the images of the atoms objects encoded into JSON, we can also tell Fireworks to store that output into the 'spec.trajectory' field of the results by assigning $stored_data_varname='trajectory'$. This is extremely useful since most of the information I am ever looking for is included in the final trajectory file. If you need more specific information from the file, these functions should provide a pretty clear example of how you would go about doing that. Keep in mind that all information must be in a compatible format for the MongoDB database. JSON is a pretty safe bet in that regard.
+Once the =t0= task is performed successfully, the =t1= task will begin and perform the relaxation on the calculation node as well. Since the =qefw.get_potential_energy= function returns the images of the atoms objects encoded into JSON, we can also tell Fireworks to store that output into the 'spec.trajectory' field of the results by assigning stored_data_varname='trajectory'. This is extremely useful since most of the information I am ever looking for is included in the final trajectory file. If you need more specific information from the file, these functions should provide a pretty clear example of how you would go about doing that. Keep in mind that all information must be in a compatible format for the MongoDB database. JSON is a pretty safe bet in that regard.
 
-You could also add in a $t3$ task which performs your own follow-up tasks, such as the $get_total_potential$ example above.
+You could also add in a =t3= task which performs your own follow-up tasks, such as the =get_total_potential= example above.
 
-You can monitor the progress of your calculation with the webgui the following bash script. For me, lpad is an alias with a $-f$ argument which points to my ``my_fireworks.yaml'' file.
+You can monitor the progress of your calculation with the webgui the following bash script. For me, lpad is an alias with a =-f= argument which points to my =my_fireworks.yaml= file.
 
 #+BEGIN_SRC sh
 lpad webgui
@@ -800,7 +798,7 @@ lpad webgui
 ** Collecting information from Fireworks
 Once the calculation has finished, you can collect the final trajectory simply by accessing the ID of the completed calcualtion from the LaunchPad.
 
-#+BEGIN_SRC python :results output org drawer
+#+BEGIN_SRC python :results output org drawer :exports both
 from fireworks import LaunchPad
 from qefw import encode_to_atoms
 from netrc import netrc
